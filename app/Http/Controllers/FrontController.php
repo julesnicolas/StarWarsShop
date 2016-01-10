@@ -6,7 +6,8 @@ use App\Product;
 use App\Category;
 use App\Tag;
 use App\Media;
-use App\Basket;
+use App\HistoryProduct;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -31,10 +32,10 @@ class FrontController extends Controller{
         return view('single', compact('product'));
     }
 
-    public function showCurrentBasket(){
-        $basket = History::where('id', 1)->with('customer', 'product')->First();
-        $customer = User::where('id', $basket->id_user)->get();
+    public function showCurrentBasket($n){
+        $basket = HistoryProduct::where('id', $n)->with('user', 'products')->First();
+        // $customer = User::where('id', $basket->user_id)->get();
 
-        return view('basket', compact('basket', 'customer'));
+        return view('basket', compact('basket'));
     }
 }

@@ -27,4 +27,8 @@ class Product extends Model{
     public function media(){
         return $this->belongsTo('App\Media');
     }
+
+    public function basket(){
+        return $this->belongsToMany('App\HistoryProduct');
+    }
 }

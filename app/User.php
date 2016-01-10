@@ -29,4 +29,8 @@ class User extends Model implements AuthenticatableContract,
     public function history(){
         return $this->hasMany('App\History');
     }
+
+    public function baskets(){
+        return $this->hasMany('App\HistoryProduct');
+    }
 }
