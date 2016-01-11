@@ -22,11 +22,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status', 'published')
+        $products = Product::select()
             ->with('category', 'media', 'tags')
             ->orderBy('publish_date', 'DESC')
-            ->take(5)
+            ->take(100)
             ->get();
+
 
         return view('admin.dashboard', compact('products'));
     }
@@ -41,13 +42,13 @@ class ProductsController extends Controller
         $tags = Tag::all();
 
         $cats = Category::all();
-        $items = array();
+        $cates = array();
 
         foreach ($cats as $cat) {
-            $items[$cat->id] = $cat->title;
+            $cates[$cat->id] = $cat->title;
         }
 
-        return view('admin.addproduct', compact('items', $items, 'tags'));
+        return view('admin.addproduct', compact('cates', $cates, 'tags'));
     }
 
     /**
@@ -59,12 +60,12 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $req = $request->all();
+        
         $product = Product::create($req);
-
 
         if (\Input::hasFile('image')) {
 
-            $this->AddImage($request, $product);
+            $this->imgsave($request, $product);
 
         };
 
@@ -152,20 +153,21 @@ class ProductsController extends Controller
 
     public function imgsave($image)
     {
-        if ($image->isValid()) {
 
             $chemin = config('images.path');
 
             $extension = $image->getClientOriginalExtension();
             do {
-                $nom = str_random(10) . '.' . $extension;
+                $nom = str_random(20) . '.' . $extension;
             } while (file_exists($chemin . '/' . $nom));
 
+            $name = $chemin .'/'. $nom;
 
-            return $image->move($chemin, $nom);
-        }
+            $name->media->name->save();
+            return  $image->move($chemin, $nom);
 
-        return false;
+
+
 
     }
 }

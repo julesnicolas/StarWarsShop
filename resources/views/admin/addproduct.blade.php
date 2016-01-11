@@ -23,8 +23,8 @@
     </div>
     <div class="row">
         <div class="four columns">
-            {!! Form::label('category_id','categories') !!}
-            {!! Form::select('item_id', $items, null)!!}
+            {!! Form::label('$cates','categories') !!}
+            {!! Form::select('category_id', $cates, null)!!}
         </div>
     </div>
     <div class="row">
