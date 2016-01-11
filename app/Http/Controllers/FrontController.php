@@ -18,7 +18,7 @@ class FrontController extends Controller{
         $products = Product::where('status', 'published')
             ->with('category', 'media', 'tags')
             ->orderBy('publish_date', 'DESC')
-            ->take(5)
+            ->take(100)
             ->get();
 
         return view('home', compact('products'));
@@ -37,4 +37,14 @@ class FrontController extends Controller{
 
         return view('basket', compact('basket', 'customer'));
     }
+
+    public function showcategoryAll($id){
+            $products = Product::select(category_id)->where('status', 'published')
+                ->with('category', 'media', 'tags')
+                ->orderBy('publish_date', 'DESC')
+                ->take(100)
+                ->get();
+
+            return view('category/'.$id, compact('products'));
+        }
 }

@@ -37,9 +37,12 @@
                       </li>
                   </ul>
                   <ul class="nav navbar-nav pull-right">
-                      <li><a href="#myModal" data-toggle="modal" data-target="#myModal">Connexion</a> </li>
-                      <li><a href="{{ url('dashboard/product') }}">Dashboard</a></li>
-                      <li><a href="{{ url('dashboard/product/create') }}">Ajouter un produit</a></li>
+                      @if(Auth::check())
+                          <li><a href="{{ url('auth/logout') }}">Deconnexion</a> </li>
+                          @else
+                          <li><a href="{{ url('auth/login') }}">Connexion</a> </li>
+                      @endif
+
                   </ul>
               </div>
               <!-- /.navbar-collapse -->
