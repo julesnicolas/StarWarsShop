@@ -1,4 +1,4 @@
-@extends('admin.masteradmin')
+@extends('master')
 
 @section('contenu')
 
@@ -28,5 +28,6 @@
         @endforeach
         </tbody>
     </table>
+
 
 @stop
