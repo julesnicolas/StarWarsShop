@@ -60,7 +60,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $req = $request->all();
-        
+
         $product = Product::create($req);
 
         if (\Input::hasFile('image')) {
@@ -103,13 +103,13 @@ class ProductsController extends Controller
         $tags = Tag::all();
 
         $cats = Category::all();
-        $items = array();
+        $cates = array();
 
         foreach ($cats as $cat) {
-            $items[$cat->id] = $cat->title;
+            $cates[$cat->id] = $cat->title;
         }
 
-        return view('admin.editproduct', compact('product', 'items', $items, 'tags'));
+        return view('admin.editproduct', compact('product', 'cates', $cates, 'tags'));
     }
 
     /**
