@@ -13,8 +13,8 @@ class CreateHistoryProductsTable extends Migration{
         Schema::create('history_products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
+            $table->integer('history_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->decimal('total', 10, 2);
             $table->integer('quantity');
             $table->timestamps();
         });
