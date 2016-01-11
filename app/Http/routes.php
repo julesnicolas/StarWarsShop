@@ -15,5 +15,10 @@
 Route::get('/', 'FrontController@showAll');
 // show the page of the product n° N + order form
 Route::get('product/{n}', 'FrontController@showSingle');
+Route::post('product/{n}', 'FrontController@order');
 // show the current basket
-Route::get('basket/{n}', 'FrontController@showCurrentBasket');
+Route::get('basket', 'FrontController@showCurrentBasket');
+// show the current basket
+Route::get('category/{n}', 'FrontController@showByCat');
+//Dashboard
+Route::resource('dashboard/product', 'ProductsController');
