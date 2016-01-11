@@ -26,13 +26,13 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav " role="menu">
                       <li>
-                          <a href="{{url('/')}}" title="E-Starwars"><i class="glyphicon glyphicon-home"></i></a>
+                          <a href="{{ url('/') }}"><i class="glyphicon glyphicon-home"></i></a>
                       </li>
                       <li class="dropdown">
-                          <a href="{{url('/categories')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produit <span class="caret"></span></a>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produit <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                              <li><a href="#">Laser</a></li>
-                              <li><a href="#">Casque</a></li>
+                              <li><a href="{{ url('category/2') }}">Laser</a></li>
+                              <li><a href="{{ url('category/1') }}">Casque</a></li>
                           </ul>
                       </li>
                   </ul>
@@ -58,7 +58,7 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="{{ URL::asset('assets\bootstrap\js\bootstrap.min.js')}}"></script>
   <!-- Note: columns can be nested, but it's not recommended since Skeleton's grid has %-based gutters, meaning a nested grid results in variable with gutters (which can end up being *really* small on certain browser/device sizes) -->
   </body>
 </html>

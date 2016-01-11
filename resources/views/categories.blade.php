@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('contenu')
+<h1>{{ $category->title }}</h1>
 
 @foreach($category->products as $product)
             <div class="col-sm-4 col-lg-4 col-md-4">
@@ -13,8 +14,6 @@
                 </div>
                   <p>{{ $product->abstract }}</p>
                   <h4 class="pull-right">{{ $product->price }}<i class="glyphicon glyphicon-euro"></i></h4>
-                  <p class="btn btn-primary">{{ $product->category->title }}</p>
-
             </div>
         @endforeach
 
