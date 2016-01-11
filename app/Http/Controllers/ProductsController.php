@@ -74,12 +74,7 @@ class ProductsController extends Controller
             $this->imgsave($request, $product);
 
         };
-
-        dump($product);
-
-        dump(imgsave);
-
-         die;
+        
         return redirect()->to('dashboard/product')->with('message', trans('creation success'));
     }
 

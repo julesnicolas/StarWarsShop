@@ -20,7 +20,6 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <h5 class="white">Star Wars shop</h5>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,8 +30,8 @@
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produit <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                              <li><a href="{{ url('category/2') }}">Laser</a></li>
-                              <li><a href="{{ url('category/1') }}">Casque</a></li>
+                              <li><a href="{{ url('/category/2') }}">Laser</a></li>
+                              <li><a href="{{ url('/category/1') }}">Casque</a></li>
                           </ul>
                       </li>
                   </ul>

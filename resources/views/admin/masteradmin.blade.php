@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titre')</title>
     <link rel="stylesheet" href="{{ URL::asset('assets\Skeleton-2.0.4\css\normalize.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets\Skeleton-2.0.4\css\normalize.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets\Skeleton-2.0.4\css\skeleton.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets\bootstrap\dist\css\bootstrap.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets\main.css') }}">
@@ -31,8 +32,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produit <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Laser</a></li>
-                            <li><a href="#">Casque</a></li>
+                            <li><a href="{{ url('/category/2') }}">Laser</a></li>
+                            <li><a href="{{ url('/category/1') }}">Casque</a></li>
                         </ul>
                     </li>
                 </ul>
