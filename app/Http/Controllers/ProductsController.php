@@ -25,7 +25,6 @@ class ProductsController extends Controller
         $products = Product::select()
             ->with('category', 'media', 'tags')
             ->orderBy('publish_date', 'DESC')
-            ->take(100)
             ->get();
 
 
