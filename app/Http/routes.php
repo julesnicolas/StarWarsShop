@@ -17,3 +17,8 @@ Route::get('/', 'FrontController@showAll');
 Route::get('product/{n}', 'FrontController@showSingle');
 // show the current basket
 Route::get('basket/', 'FrontController@showCurrentBasket');
+
+//Dashboard
+Route::resource('dashboard/product', 'ProductsController');
+
+
