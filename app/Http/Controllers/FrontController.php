@@ -6,9 +6,7 @@ use App\Product;
 use App\Category;
 use App\Tag;
 use App\Media;
-use App\History;
-use App\HistoryProduct;
-use App\User;
+use App\Basket;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +18,7 @@ class FrontController extends Controller{
         $products = Product::where('status', 'published')
             ->with('category', 'media', 'tags')
             ->orderBy('publish_date', 'DESC')
-            ->take(5)
+            ->take(100)
             ->get();
 
         return view('home', compact('products'));
@@ -33,24 +31,20 @@ class FrontController extends Controller{
         return view('single', compact('product'));
     }
 
-    public function showByCat($n){
-        $category = Category::where('id', $n)
-            ->with('products')->First();
-
-        return view('categories', compact('category'));
-    }
-
-    public function order($n, Request $request){
-        $product = Product::where('id', $n)
-          ->with('category', 'media', 'tags')->First();
-        $init = $request->input('quantity');
-
-        return view('single', compact('product', 'init'));
-    }
-
     public function showCurrentBasket(){
-        $basket = History::where('id', 1)->with('user', 'historyproducts', 'products')->First();
+        $basket = History::where('id', 1)->with('customer', 'product')->First();
+        $customer = User::where('id', $basket->id_user)->get();
 
-        return view('basket', compact('basket', 'products'));
+        return view('basket', compact('basket', 'customer'));
     }
+
+    public function showcategoryAll($id){
+            $products = Product::select(category_id)->where('status', 'published')
+                ->with('category', 'media', 'tags')
+                ->orderBy('publish_date', 'DESC')
+                ->take(100)
+                ->get();
+
+            return view('category/'.$id, compact('products'));
+        }
 }

@@ -12,6 +12,10 @@ class History extends Model{
         'confirmed'
     ];
 
+    public function products(){
+        return $this->belongsToMany('App\Product', 'history_products');
+    }
+
     public function user(){
         return $this->belongsTo('App\User');
     }

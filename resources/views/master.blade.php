@@ -31,15 +31,18 @@
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produit <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                              <li><a href="{{ url('category/2') }}">Laser</a></li>
-                              <li><a href="{{ url('category/1') }}">Casque</a></li>
+                              <li><a href="#">Laser</a></li>
+                              <li><a href="#">Casque</a></li>
                           </ul>
                       </li>
                   </ul>
                   <ul class="nav navbar-nav pull-right">
-                      <li><a href="#myModal" data-toggle="modal" data-target="#myModal">Connexion</a> </li>
-                      <li><a href="{{ url('dashboard/product') }}">Dashboard</a></li>
-                      <li><a href="{{ url('dashboard/product/create') }}">Ajouter un produit</a></li>
+                      @if(Auth::check())
+                          <li><a href="{{ url('auth/logout') }}">Deconnexion</a> </li>
+                          @else
+                          <li><a href="{{ url('auth/login') }}">Connexion</a> </li>
+                      @endif
+
                   </ul>
               </div>
               <!-- /.navbar-collapse -->

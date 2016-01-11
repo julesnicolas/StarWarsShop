@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ImagesRequest;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use App\Product;
 use App\Category;
@@ -16,6 +16,13 @@ class ProductsController extends Controller
 {
 
     /**
+     * @abstract middleware auth protected dashboard
+     */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,6 +32,7 @@ class ProductsController extends Controller
         $products = Product::select()
             ->with('category', 'media', 'tags')
             ->orderBy('publish_date', 'DESC')
+            ->take(100)
             ->get();
 
 
@@ -68,12 +76,11 @@ class ProductsController extends Controller
 
         };
 
-        if (!empty($request->input('tags'))) {
-            foreach ($request->input('tags') as $id) {
-                $product->tags()->attach($id);
-            }
-        };
+        dump($product);
 
+        dump(imgsave);
+
+         die;
         return redirect()->to('dashboard/product')->with('message', trans('creation success'));
     }
 

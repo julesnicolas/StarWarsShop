@@ -10,11 +10,10 @@
             @foreach($product->tags as $tag)
                 <p>{{ $tag->name }}</p>
             @endforeach
-            {!! Form::open(['product/'.$product->id]) !!}
+            {!! Form::open(['url' => 'basket']) !!}
               <div>
                 {!! Form::label('quantité') !!}
                 {!! Form::select('quantity', array('1' => '1', '2' => '2', '3' => '3', '4' => '4',), null, ['placeholder' => 'Séléctionner la quantité...']) !!}
-                {!! Form::hidden('product', $product->id) !!}
               </div>
               {!! Form::submit('Ajouter au panier !') !!}
             {!! Form::close() !!}
